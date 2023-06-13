@@ -3,9 +3,11 @@ using namespace std;
 
 #include "shopUtils/snack.h"
 #include "shopUtils/animal.h"
+#include "shopUtils/order.h"
 
 int main()
 {
-    cout << snackList[0] << endl;
-    cout << animalList[0] << endl;
+    Snack s("Chocolate", 20);
+    Order order(s, 2);
+    order.print();
 }
