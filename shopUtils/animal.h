@@ -17,6 +17,8 @@ std::string animalList[] = {
     "Saltwater Crocodile",
     "Spinner Dolphin",
     "Black Flying Fox",
-    "Kangaroo"};
+    "Kangaroo"
+    "Pla Sha Do Australia"
+    };
 
 #endif
