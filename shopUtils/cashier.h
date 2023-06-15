@@ -18,6 +18,7 @@ Cashier::Cashier()
     this->currentCustomer = NULL;
 }
 
+// This is still unfinished
 void Cashier::customerCheckOut(double money)
 {
 
