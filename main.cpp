@@ -2,12 +2,20 @@
 using namespace std;
 
 #include "shopUtils/snack.h"
-#include "shopUtils/animal.h"
+#include "shopUtils/animalSpecies.h"
 #include "shopUtils/order.h"
+#include "shopUtils/receipt.h"
+#include "shopUtils/customer.h"
+#include "shopUtils/animal.h"
 
 int main()
 {
-    Snack s("Chocolate", 20);
-    Order order(s, 2);
-    order.print();
+    Customer kangaroo(AnimalSpecies::Kangaroo, 200);
+    kangaroo.order(SnackTypes::Cheese, 2);
+    kangaroo.order(SnackTypes::BananaChips, 2);
+    kangaroo.order(SnackTypes::Brownies, 3);
+    kangaroo.order(SnackTypes::BananaChips, 1);
+    kangaroo.order(SnackTypes::SaltedPeanuts, 1);
+    Receipt bill = kangaroo.getReceipt();
+    bill.print();
 }

@@ -1,60 +1,102 @@
 #ifndef snack_h
 #define snack_h
 
+#include "snackTypes.h"
+#include <utility>
+
 class Snack
 {
 private:
-    string snack;
+    std::string snack;
     double price;
+    std::pair<std::string, double> getNameAndPrice(enum SnackTypes snack);
 
 public:
-    Snack(string, double);
-    Snack(pair<string, double> snack);
-    string getName() { return this->snack; }
+    Snack(SnackTypes);
+    Snack();
+    std::string getName() { return this->snack; }
     double getPrice() { return this->price; }
 };
 
-Snack::Snack(string snack = "Undefined snack", double price = 0)
+Snack::Snack()
 {
-    this->snack = snack;
-    this->price = price;
+    this->snack = "UnknownSnack";
+    this->price = 0;
 }
 
-Snack::Snack(pair<string, double> snack)
+Snack::Snack(SnackTypes snack)
 {
-    this->snack = snack.first;
-    this->price = snack.second;
+    pair<string, double> s = this->getNameAndPrice(snack);
+    this->snack = s.first;
+    this->price = s.second;
 }
 
-std::pair<string, double> snackList[] = {
-    make_pair("Salted peanuts", 5),
-    make_pair("Pretzels", 20),
-    make_pair("Potato chips", 20),
-    make_pair("Banana chips", 20),
-    make_pair("Apple chips", 20),
-    make_pair("Pork rinds", 20),
-    make_pair("Cheese dips", 20),
-    make_pair("Mixed nuts", 20),
-    make_pair("Popcorn", 20),
-    make_pair("Beef jerky", 20),
-    make_pair("Crackers", 20),
-    make_pair("Corn snacks", 20),
-    make_pair("Cheese", 20),
-    make_pair("Chocolates", 20),
-    make_pair("Candies", 20),
-    make_pair("Ice cream", 20),
-    make_pair("Milkshakes", 20),
-    make_pair("Pastries", 20),
-    make_pair("Pies", 20),
-    make_pair("Cookies", 20),
-    make_pair("Cakes", 20),
-    make_pair("Puddings", 20),
-    make_pair("Cereal", 20),
-    make_pair("Brownies", 20),
-    make_pair("Fudge", 20),
-    make_pair("Peanut butter", 20),
-    make_pair("Pop tarts", 20),
-    make_pair("Pancakes", 20),
-    make_pair("Scrones", 20)};
+std::pair<std::string, double> Snack::getNameAndPrice(enum SnackTypes snack)
+{
+    switch (snack)
+    {
+    case SaltedPeanuts:
+        return std::make_pair("SaltedPeanuts", 13);
+    case Pretzels:
+        return std::make_pair("Pretzels", 25);
+    case PotatoChips:
+        return std::make_pair("PotatoChips", 15);
+    case BananaChips:
+        return std::make_pair("BananaChips", 30);
+    case AppleChips:
+        return std::make_pair("AppleChips", 30);
+    case PorkRinds:
+        return std::make_pair("PorkRinds", 40);
+    case CheeseDips:
+        return std::make_pair("CheeseDips", 20);
+    case MixedNuts:
+        return std::make_pair("MixedNuts", 20);
+    case Popcorn:
+        return std::make_pair("Popcorn", 40);
+    case BeefJerky:
+        return std::make_pair("BeefJerky", 45);
+    case Crackers:
+        return std::make_pair("Crackers", 30);
+    case CornSnacks:
+        return std::make_pair("CornSnacks", 17);
+    case Cheese:
+        return std::make_pair("Cheese", 50);
+    case Chocolates:
+        return std::make_pair("Chocolates", 30);
+    case Candies:
+        return std::make_pair("Candies", 10);
+    case IceCream:
+        return std::make_pair("IceCream", 25);
+    case Milkshakes:
+        return std::make_pair("Milkshakes", 40);
+    case Pastries:
+        return std::make_pair("Pastries", 50);
+    case Pies:
+        return std::make_pair("Pies", 70);
+    case Cookies:
+        return std::make_pair("Cookies", 13);
+    case Cakes:
+        return std::make_pair("Cakes", 70);
+    case Puddings:
+        return std::make_pair("Puddings", 20);
+    case Cereal:
+        return std::make_pair("Cereal", 25);
+    case Brownies:
+        return std::make_pair("Brownies", 40);
+    case Fudge:
+        return std::make_pair("Fudge", 50);
+    case PeanutButter:
+        return std::make_pair("PeanutButter", 30);
+    case PopTarts:
+        return std::make_pair("PopTarts", 25);
+    case Pancakes:
+        return std::make_pair("Pancakes", 20);
+    case Scrones:
+        return std::make_pair("Scrones", 40);
+    case UnknownSnack:
+    default:
+        return std::make_pair("UnknownSnack", 0);
+    }
+}
 
 #endif
