@@ -28,6 +28,7 @@ void Shop::randomSpawn()
 {
     while (!this->gameOver)
     {
+        srand(time(0));
         int customerType = rand() % 17;
         double money = rand() % 100 + 200;
         Customer customer(static_cast<AnimalSpecies>(customerType), money);
@@ -36,15 +37,15 @@ void Shop::randomSpawn()
             customer.order(static_cast<SnackTypes>(rand() % 29), rand() % 5 + 1);
         this->queue->push(customer);
         std::cout << "* New customer: " << customer.getSpecies() << " $" << customer.getMoney() << " with " << orderCount << " orders." << std::endl;
-        Beep(Notes::B5, 250);
-        Beep(Notes::Gsharp5, 250);
         if (this->queue->getSize() > 10)
         {
-            std::cout << "You lose, the queue is too long. Customers have to wait outside the shop and got hit by a car." << std::endl;
             this->gameOver = true;
+            Interface::longQueue();
             break;
         }
-        Sleep(rand() % 15000 + 15000);
+        Beep(Notes::B5, 250);
+        Beep(Notes::Gsharp5, 250);
+        Sleep(rand() % 10000 + 10000);
     }
 }
 
@@ -73,22 +74,34 @@ void Shop::operate()
             Interface::displayCashier(this->cashier);
             if (!this->cashier->customerCheckOut(this->queue->front()))
             {
-                getch();
-                break;
+                this->gameOver = true;
+                Interface::fired();
+                return;
             }
             if (!this->cashier->operate())
             {
                 this->gameOver = true;
-                std::cout << "You are fired for changing too much / too few money to customer." << std::endl;
-                std::cout << "Game Over!" << std::endl;
+                Interface::fired();
                 return;
             }
             else
             {
                 this->queue->pop();
+                Beep(Notes::E4, 100);
+                Beep(Notes::Gsharp4, 100);
+                Beep(Notes::B4, 100);
+                Beep(Notes::E5, 100);
             }
-            getch();
             break;
+
+        case '4':
+        {
+            double missing;
+            std::cout << "How much money this customer is missing: $" << std::endl;
+            std::cin >> missing;
+            // Implement what happen if it's correct / incorrect
+        }
+        break;
         case 3:
             return;
         default:

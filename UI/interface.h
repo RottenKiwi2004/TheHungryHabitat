@@ -15,6 +15,8 @@ public:
     static void displayCashier(Cashier *);
     static void displayReceipt(Receipt *);
     static void showOptions();
+    static void fired();
+    static void longQueue();
 };
 
 void Interface::start()
@@ -68,6 +70,30 @@ void Interface::showOptions()
     Beep(Notes::E4, 100);
     Beep(Notes::G4, 100);
     Beep(Notes::C5, 100);
+}
+
+void Interface::fired()
+{
+    std::cout << "You are fired for changing too much / too few money to customer." << std::endl;
+    std::cout << "Game Over!" << std::endl;
+    Beep(Notes::C5, 200);
+    Beep(Notes::A4, 200);
+    Beep(Notes::Fsharp4, 200);
+    Beep(Notes::Dsharp4, 200);
+    Beep(Notes::C4, 200);
+}
+
+void Interface::longQueue()
+{
+    std::cout << "You lose, the queue is too long. Customers have to wait outside the shop and got hit by a car." << std::endl;
+    Beep(Notes::B4, 200);
+    Beep(Notes::F5, 400);
+    Beep(Notes::F5, 200);
+    Beep(Notes::F5, 200);
+    Beep(Notes::E5, 200);
+    Beep(Notes::D5, 200);
+    Beep(Notes::C5, 400);
+    Beep(Notes::C6, 200);
 }
 
 #endif
