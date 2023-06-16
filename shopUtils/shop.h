@@ -97,7 +97,7 @@ void Shop::operate()
         case '4':
         {
             double missing;
-            std::cout << "How much money this customer is missing: $" << std::endl;
+            std::cout << "How much money this customer is missing: $";
             std::cin >> missing;
             // Implement what happen if it's correct / incorrect
         }
