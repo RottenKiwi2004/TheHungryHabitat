@@ -3,6 +3,7 @@
 
 #include "../queueSystem/queue.h"
 #include "cashier.h"
+#include "../soundSystem/notes.h"
 
 #include <thread>
 #include <windows.h>
@@ -30,7 +31,8 @@ void Shop::randomSpawn()
         double money = rand() % 50 + 50;
         Customer customer(static_cast<AnimalSpecies>(customerType), money);
         this->queue->push(customer);
-        std::cout << "New customer has arrived: " << customer.getSpecies() << " with money " << customer.getMoney() << std::endl;
+        std::cout << "* New customer: " << customer.getSpecies() << " $" << customer.getMoney() << std::endl;
+        Beep(Notes::B5, 200);
     }
 }
 
@@ -38,10 +40,12 @@ void Shop::operate()
 {
     while (true)
     {
+        Interface::showOptions();
         switch (getch())
         {
         case '1':
             Interface::displayQueue(this->queue);
+            getch();
             break;
         case 3:
             return;
