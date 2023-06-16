@@ -3,6 +3,9 @@
 
 #include "snack.h"
 #include "snackTypes.h"
+#include <string>
+#include <iostream>
+#include <iomanip>
 
 class Order
 {
@@ -29,8 +32,8 @@ Order::Order(Snack snack, int quantity)
 
 void Order::print()
 {
-    std::string q = "(x" + to_string(this->quantity) + ")";
-    cout << setw(15) << left << this->snack.getName() << setw(5) << q << " ---------- " << setw(4) << right << this->price << endl;
+    std::string q = "(x" + std::to_string(this->quantity) + ")";
+    std::cout << std::setw(15) << std::left << this->snack.getName() << std::setw(5) << q << " ---------- " << std::setw(4) << std::right << this->price << std::endl;
 }
 
 int Order::getQuantity()

@@ -26,7 +26,7 @@ Snack::Snack()
 
 Snack::Snack(SnackTypes snack)
 {
-    pair<string, double> s = this->getNameAndPrice(snack);
+    std::pair<std::string, double> s = this->getNameAndPrice(snack);
     this->snack = s.first;
     this->price = s.second;
 }

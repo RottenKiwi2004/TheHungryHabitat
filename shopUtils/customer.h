@@ -9,17 +9,17 @@ class Customer
 {
     // Implement customer, they can order food, and come with some amount of money.
 private:
-    std::string species;
+    std::string species = "";
     Receipt receipt;
     double money;
 
 public:
-    Customer();
     Customer(AnimalSpecies = AnimalSpecies::UnknownSpecies, double = 0);
     void order(Snack, int = 1);
     void order(enum SnackTypes, int = 1);
     Receipt getReceipt();
     std::string getSpecies();
+    double getMoney();
 };
 
 Customer::Customer(AnimalSpecies species, double money)
@@ -49,6 +49,11 @@ Receipt Customer::getReceipt()
 std::string Customer::getSpecies()
 {
     return this->species;
+}
+
+double Customer::getMoney()
+{
+    return this->money;
 }
 
 #endif

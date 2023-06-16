@@ -4,6 +4,10 @@
 #include "order.h"
 #include "animal.h"
 #include <vector>
+#include <iostream>
+#include <iomanip>
+
+void swap(Order *, Order *);
 
 class Receipt
 {
@@ -42,25 +46,26 @@ void Receipt::addOrder(Order order)
 
 void Receipt::print()
 {
-    cout << "=============== Receipt ===============" << endl;
-    cout << "Customer: " << this->customer.getSpecies() << endl;
-    cout << "=======================================" << endl;
+    std::cout << "=============== Receipt ===============" << std::endl;
+    std::cout << "Customer: " << this->customer.getSpecies() << std::endl;
+    std::cout << "=======================================" << std::endl;
     for (int i = 0; i < this->orderList.size(); i++)
         this->orderList[i].print();
-    cout << "=======================================" << endl;
+    std::cout << "=======================================" << std::endl;
 }
 
 void Receipt::sortOrder()
 {
+
     for (int i = 0; i < this->orderList.size() - 1; i++)
     {
         for (int j = i; j < this->orderList.size() - 1; j++)
         {
             if (this->orderList[j].getName() > this->orderList[j + 1].getName())
-                swap(this->orderList[j], this->orderList[j + 1]);
+                swap(&this->orderList[j], &this->orderList[j + 1]);
             else if (this->orderList[j].getName() > this->orderList[j + 1].getName())
                 if (this->orderList[j].getQuantity() < this->orderList[j + 1].getQuantity())
-                    swap(this->orderList[j], this->orderList[j + 1]);
+                    swap(&this->orderList[j], &this->orderList[j + 1]);
         }
     }
 }
@@ -68,6 +73,13 @@ void Receipt::sortOrder()
 double Receipt::getTotal()
 {
     return this->total;
+}
+
+void swap(Order *a, Order *b)
+{
+    Order *tmp = a;
+    a = b;
+    b = tmp;
 }
 
 #endif
