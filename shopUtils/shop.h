@@ -36,7 +36,7 @@ void Shop::randomSpawn()
         for (int i = 0; i < orderCount; i++)
             customer.order(static_cast<SnackTypes>(rand() % 29), rand() % 5 + 1);
         this->queue->push(customer);
-        std::cout << "* New customer: " << customer.getSpecies() << " $" << customer.getMoney() << " with " << orderCount << " orders." << std::endl;
+        // std::cout << "* New customer: " << customer.getSpecies() << " $" << customer.getMoney() << " with " << orderCount << " orders." << std::endl;
         if (this->queue->getSize() > 10)
         {
             this->gameOver = true;
