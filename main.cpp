@@ -3,6 +3,5 @@
 int main()
 {
     Game game;
-    while (true)
-        game.process();
+    game.process();
 }

@@ -12,6 +12,7 @@ class Queue
 private:
     Node *first = NULL;
     Node *last = NULL;
+    int size = 0;
 
 public:
     Queue();
@@ -20,6 +21,7 @@ public:
     void pop();
     bool empty();
     void printAll();
+    int getSize();
     ~Queue();
 };
 
@@ -42,6 +44,7 @@ void Queue::push(Customer customer)
         this->last->setNext(newCustomer);
         this->last = this->last->getNext();
     }
+    this->size++;
 }
 
 bool Queue::empty()
@@ -68,6 +71,7 @@ void Queue::pop()
     }
     else
         this->first = this->first->getNext();
+    this->size--;
     delete temp;
 }
 
@@ -75,6 +79,11 @@ void Queue::printAll()
 {
     for (Node *temp = this->first; temp != NULL; temp = temp->getNext())
         std::cout << temp->getCustomer().getSpecies() << ", " << temp->getCustomer().getMoney() << std::endl;
+}
+
+int Queue::getSize()
+{
+    return this->size;
 }
 
 Queue::~Queue()
