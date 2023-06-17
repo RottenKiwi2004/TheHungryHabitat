@@ -75,7 +75,7 @@ void Shop::operate()
             if (!this->cashier->customerCheckOut(this->queue->front()))
             {
                 this->gameOver = true;
-                Interface::fired();
+                Interface::notEnough();
                 return;
             }
             if (!this->cashier->operate())
@@ -96,9 +96,42 @@ void Shop::operate()
 
         case '4':
         {
-            double missing;
+            double total = this->queue->front().getReceipt()->getTotal();
+            double money = this->queue->front().getMoney();
+            if (total < money)
+            {
+                this->gameOver = true;
+                Interface::denyRage();
+                Beep(Notes::G5, 200);
+                Beep(Notes::G5, 100);
+                Beep(Notes::G5, 400);
+                Beep(Notes::G5, 100);
+                Beep(Notes::G5, 200);
+                return;
+            }
             std::cout << "How much money this customer is missing: $";
+            double missing;
             std::cin >> missing;
+
+            if (missing == total - money)
+            {
+                this->queue->pop();
+                Beep(Notes::E4, 100);
+                Beep(Notes::Gsharp4, 100);
+                Beep(Notes::B4, 100);
+                Beep(Notes::E5, 100);
+            }
+            else
+            {
+                this->gameOver = true;
+                Interface::cashRage();
+
+                Beep(Notes::C4, 200);
+                Beep(Notes::Dsharp4, 200);
+                Beep(Notes::F4, 400);
+                Beep(Notes::Fsharp4, 400);
+                return;
+            }
             // Implement what happen if it's correct / incorrect
         }
         break;

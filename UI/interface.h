@@ -17,6 +17,9 @@ public:
     static void showOptions();
     static void fired();
     static void longQueue();
+    static void denyRage();
+    static void cashRage();
+    static void notEnough();
 };
 
 void Interface::start()
@@ -94,6 +97,21 @@ void Interface::longQueue()
     Beep(Notes::D5, 200);
     Beep(Notes::C5, 400);
     Beep(Notes::C6, 200);
+}
+
+void Interface::denyRage()
+{
+    std::cout << "Customer raged because you denied their innocent order. Your boss fired you." << std::endl;
+}
+
+void Interface::cashRage()
+{
+    std::cout << "Customer went back to grab their money, but you told them the wrong amount. They reported your boss and you are fired." << std::endl;
+}
+
+void Interface::notEnough()
+{
+    std::cout << "Boss: How dare you give change to customer that has not enough money!?" << std::endl;
 }
 
 #endif
