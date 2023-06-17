@@ -28,3 +28,11 @@ The flow of the game will be as follow
   - You told them to get wrong amount of money.
 
 ### Hope you will have some fun with this game!
+
+Controls
+
+- Start game: Enter
+- Select choices: NumKeys
+- Input number: Type numbers then hit enter
+- Move between coins: Arrow up / down
+- Add / Remove coins: + / -
