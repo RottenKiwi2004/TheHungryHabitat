@@ -52,8 +52,9 @@ bool Cashier::operate()
     {
         system("cls");
         // std::cout << "Change need to be made: " << this->change << std::endl;
+        std::cout << "Use arrow up / down to navigate between each coin / note types" << std::endl;
         for (int i = 0; i < 7; i++)
-            std::cout << (current == i ? "> $" : "  $") << std::left << std::setw(4) << amount[i] << ": " << coinCount[i] << std::endl;
+            std::cout << (current == i ? "> $" : "  $") << std::left << std::setw(4) << amount[i] << ": " << coinCount[i] << (current == i ? "  [ +/- ]" : "") << std::endl;
         switch (getch())
         {
         // Prev

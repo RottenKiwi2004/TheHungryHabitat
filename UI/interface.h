@@ -25,7 +25,27 @@ public:
 void Interface::start()
 {
     system("cls");
-    std::cout << "Press Enter to start game" << std::endl;
+    std::cout << "How to play?" << std::endl
+              << std::endl;
+    std::cout << "- Select an action -" << std::endl
+              << std::endl;
+    std::cout << "Press 1: Look at the queue and how much money they have." << std::endl
+              << std::endl;
+    std::cout << "Press 2: Show the first customer's receipt." << std::endl;
+    std::cout << "         You must add all the prices together yourself and then..." << std::endl
+              << std::endl;
+    std::cout << "Press 3: Access the cashier" << std::endl;
+    std::cout << "         Press arrow keys to move up or down between each coin types" << std::endl;
+    std::cout << "         Press + or - to increase or decrease the amount." << std::endl
+              << std::endl;
+    std::cout << "Press 4: Tell customer that they don't have enough money" << std::endl;
+    std::cout << "         Type in the amount of money that customer lacks" << std::endl
+              << std::endl;
+    std::cout << "* Any incorrect move will result in an immediate Game Over! *" << std::endl
+              << std::endl;
+    std::cout << "* If there are more than 10 customers in the queue, the game is also over *" << std::endl
+              << std::endl;
+    std::cout << " ----- Press Enter to start the game ----- " << std::endl;
 }
 
 void Interface::displayCashier(Cashier *cashier)
@@ -65,6 +85,8 @@ void Interface::displayReceipt(Receipt *receipt)
 void Interface::showOptions()
 {
     system("cls");
+    std::cout << "- Select an action -" << std::endl
+              << std::endl;
     std::cout << "1. Show queue" << std::endl;
     std::cout << "2. Show customer receipt" << std::endl;
     std::cout << "3. Change coins" << std::endl;
