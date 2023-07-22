@@ -41,6 +41,7 @@ void Shop::randomSpawn()
         {
             this->gameOver = true;
             Interface::longQueue();
+            exit(0);
             break;
         }
         Beep(Notes::B5, 250);
@@ -76,12 +77,14 @@ void Shop::operate()
             {
                 this->gameOver = true;
                 Interface::notEnough();
+                exit(0);
                 return;
             }
             if (!this->cashier->operate())
             {
                 this->gameOver = true;
                 Interface::fired();
+                exit(0);
                 return;
             }
             else
@@ -107,6 +110,7 @@ void Shop::operate()
                 Beep(Notes::G5, 400);
                 Beep(Notes::G5, 100);
                 Beep(Notes::G5, 200);
+                exit(0);
                 return;
             }
             std::cout << "How much money this customer is missing: $";
@@ -130,6 +134,7 @@ void Shop::operate()
                 Beep(Notes::Dsharp4, 200);
                 Beep(Notes::F4, 400);
                 Beep(Notes::Fsharp4, 400);
+                exit(0);
                 return;
             }
             // Implement what happen if it's correct / incorrect
