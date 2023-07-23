@@ -21,7 +21,6 @@ Node::Node(Customer customer)
     this->customer = customer;
 }
 
-// This is still unfinished
 void Node::setNext(Node *nextCustomer)
 {
     this->nextCustomer = nextCustomer;
