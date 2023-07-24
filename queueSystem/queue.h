@@ -77,7 +77,7 @@ void Queue::pop()
 void Queue::printAll()
 {
     for (Node *temp = this->first; temp != NULL; temp = temp->getNext())
-        std::cout << temp->getCustomer().getSpecies() << ", " << temp->getCustomer().getMoney() << std::endl;
+        std::cout << temp->getCustomer().getSpecies() << ": $" << temp->getCustomer().getMoney() << std::endl;
 }
 
 int Queue::getSize()
